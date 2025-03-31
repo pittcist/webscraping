@@ -173,5 +173,5 @@ cython_debug/
 # PyPI configuration file
 .pypirc
 
-/venv
-.DS_Store
+# /venv
+# .DS_Store
