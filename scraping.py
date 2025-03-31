@@ -54,8 +54,8 @@ with open("neurips_2024_links.csv", "r", encoding="utf-8") as file:
             try:
                 abstract = extract_abstract(row[0])
                 print(abstract)
-                writer.writerow(abstract)
-                # output_file.write(', "/n",')
+                output_file.write('\"' + abstract + '\"')
+                output_file.write('\n')
             except:
                 print("Invalid link")
 
