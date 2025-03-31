@@ -39,7 +39,7 @@ def extract_abstract(page_url):
 
     abstract = soup.find('div', class_='p-3')
     abstract_text = abstract.get_text(strip=True)
-    return abstract_text
+    return str(abstract_text)
 
 # Extract links to abstract pages and save to a csv file
 # get_all_links_and_save(neurips, "neurips_2024_links.csv")
@@ -47,15 +47,15 @@ def extract_abstract(page_url):
 with open("neurips_2024_links.csv", "r", encoding="utf-8") as file:
     with open(output_file, "w+", encoding="utf-8") as output_file:
         reader = csv.reader(file)
-        # writer = csv.writer(output_file)
+        writer = csv.writer(output_file)
         count = 1
         for row in reader:
             print(row[0])         
             try:
                 abstract = extract_abstract(row[0])
                 print(abstract)
-                output_file.write(abstract)
-                output_file.write("\n")
+                writer.writerow(abstract)
+                # output_file.write(', "/n",')
             except:
                 print("Invalid link")
 
